@@ -3,14 +3,32 @@ package uacd.master.sir.fast_food_api.models;
 import jakarta.persistence.*;
 
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 public class Produit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "idproduit", nullable = false)
+    @Column(name = "idproduit", nullable = false)
     private int idproduit;
+    @Basic
+    @Column(name = "idcategorie", nullable = false)
+    private int idcategorie;
+    @Basic
+    @Column(name = "nom", nullable = true, length = 254)
+    private String nom;
+    @Basic
+    @Column(name = "description", nullable = true, length = 254)
+    private String description;
+    @Basic
+    @Column(name = "prix", nullable = true, precision = 0)
+    private BigInteger prix;
+    @Basic
+    @Column(name = "image", nullable = true, length = 254)
+    private String image;
+    @OneToMany(mappedBy = "produitByIdproduit")
+    private Collection<Produitfastfood> produitfastfoodsByIdproduit;
 
     public int getIdproduit() {
         return idproduit;
@@ -20,10 +38,6 @@ public class Produit {
         this.idproduit = idproduit;
     }
 
-    @Basic
-    @Column(name = "idcategorie", nullable = false)
-    private int idcategorie;
-
     public int getIdcategorie() {
         return idcategorie;
     }
@@ -31,10 +45,6 @@ public class Produit {
     public void setIdcategorie(int idcategorie) {
         this.idcategorie = idcategorie;
     }
-
-    @Basic
-    @Column(name = "nom", nullable = true, length = 254)
-    private String nom;
 
     public String getNom() {
         return nom;
@@ -44,10 +54,6 @@ public class Produit {
         this.nom = nom;
     }
 
-    @Basic
-    @Column(name = "description", nullable = true, length = 254)
-    private String description;
-
     public String getDescription() {
         return description;
     }
@@ -56,10 +62,6 @@ public class Produit {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "prix", nullable = true, precision = 0)
-    private BigInteger prix;
-
     public BigInteger getPrix() {
         return prix;
     }
@@ -67,10 +69,6 @@ public class Produit {
     public void setPrix(BigInteger prix) {
         this.prix = prix;
     }
-
-    @Basic
-    @Column(name = "image", nullable = true, length = 254)
-    private String image;
 
     public String getImage() {
         return image;
@@ -91,5 +89,13 @@ public class Produit {
     @Override
     public int hashCode() {
         return Objects.hash(idproduit, idcategorie, nom, description, prix, image);
+    }
+
+    public Collection<Produitfastfood> getProduitfastfoodsByIdproduit() {
+        return produitfastfoodsByIdproduit;
+    }
+
+    public void setProduitfastfoodsByIdproduit(Collection<Produitfastfood> produitfastfoodsByIdproduit) {
+        this.produitfastfoodsByIdproduit = produitfastfoodsByIdproduit;
     }
 }
