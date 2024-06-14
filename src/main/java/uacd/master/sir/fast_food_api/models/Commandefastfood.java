@@ -1,19 +1,33 @@
 package uacd.master.sir.fast_food_api.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
-@jakarta.persistence.IdClass(uacd.master.sir.fast_food_api.models.CommandefastfoodPK.class)
+@IdClass(CommandefastfoodPK.class)
 public class Commandefastfood {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "idcommande", nullable = false)
+    @Column(name = "idcommande", nullable = false)
     private int idcommande;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "idfastfood", nullable = false)
+    private int idfastfood;
+    @ManyToOne
+    @JoinColumn(name = "idfastfood", referencedColumnName = "idfastfood", insertable = false, updatable = false)
+    private Fastfood fastfoodByIdfastfood;
+
+// Ajoutez également les getters et setters pour cette propriété
+
+    public Fastfood getFastfoodByIdfastfood() {
+        return fastfoodByIdfastfood;
+    }
+
+    public void setFastfoodByIdfastfood(Fastfood fastfoodByIdfastfood) {
+        this.fastfoodByIdfastfood = fastfoodByIdfastfood;
+    }
 
     public int getIdcommande() {
         return idcommande;
@@ -22,11 +36,6 @@ public class Commandefastfood {
     public void setIdcommande(int idcommande) {
         this.idcommande = idcommande;
     }
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @jakarta.persistence.Column(name = "idfastfood", nullable = false)
-    private int idfastfood;
 
     public int getIdfastfood() {
         return idfastfood;

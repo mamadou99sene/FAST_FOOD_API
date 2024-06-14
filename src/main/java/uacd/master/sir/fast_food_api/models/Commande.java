@@ -21,7 +21,7 @@ public class Commande {
     @Column(name = "status", nullable = true, length = 254)
     private String status;
     @ManyToOne
-    @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur", nullable = false)
+    @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur", nullable = false, insertable = false, updatable = false)
     private Utilisateur utilisateurByIdutilisateur;
 
     public int getIdcommande() {
