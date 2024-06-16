@@ -1,8 +1,7 @@
 package uacd.master.sir.fast_food_api.models;
 
 import jakarta.persistence.*;
-
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,9 +26,9 @@ public class Fastfood {
     @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur", nullable = false, insertable = false, updatable = false)
     private Utilisateur utilisateurByIdutilisateur;
     @OneToMany(mappedBy = "fastfoodByIdfastfood")
-    private Collection<Commandefastfood> commandefastfoodsByIdfastfood;
+    private List<Commandefastfood> commandefastfoodsByIdfastfood;
     @OneToMany(mappedBy = "fastfoodByIdfastfood")
-    private Collection<Produitfastfood> produitfastfoodsByIdfastfood;
+    private List<Produitfastfood> produitfastfoodsByIdfastfood;
 
     public int getIdfastfood() {
         return idfastfood;
@@ -92,19 +91,19 @@ public class Fastfood {
         this.utilisateurByIdutilisateur = utilisateurByIdutilisateur;
     }
 
-    public Collection<Commandefastfood> getCommandefastfoodsByIdfastfood() {
+    public List<Commandefastfood> getCommandefastfoodsByIdfastfood() {
         return commandefastfoodsByIdfastfood;
     }
 
-    public void setCommandefastfoodsByIdfastfood(Collection<Commandefastfood> commandefastfoodsByIdfastfood) {
+    public void setCommandefastfoodsByIdfastfood(List<Commandefastfood> commandefastfoodsByIdfastfood) {
         this.commandefastfoodsByIdfastfood = commandefastfoodsByIdfastfood;
     }
 
-    public Collection<Produitfastfood> getProduitfastfoodsByIdfastfood() {
+    public List<Produitfastfood> getProduitfastfoodsByIdfastfood() {
         return produitfastfoodsByIdfastfood;
     }
 
-    public void setProduitfastfoodsByIdfastfood(Collection<Produitfastfood> produitfastfoodsByIdfastfood) {
+    public void setProduitfastfoodsByIdfastfood(List<Produitfastfood> produitfastfoodsByIdfastfood) {
         this.produitfastfoodsByIdfastfood = produitfastfoodsByIdfastfood;
     }
 }

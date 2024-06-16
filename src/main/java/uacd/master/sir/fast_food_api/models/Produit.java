@@ -3,7 +3,7 @@ package uacd.master.sir.fast_food_api.models;
 import jakarta.persistence.*;
 
 import java.math.BigInteger;
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -28,7 +28,7 @@ public class Produit {
     @Column(name = "image", nullable = true, length = 254)
     private String image;
     @OneToMany(mappedBy = "produitByIdproduit")
-    private Collection<Produitfastfood> produitfastfoodsByIdproduit;
+    private List<Produitfastfood> produitfastfoodsByIdproduit;
 
     public int getIdproduit() {
         return idproduit;
@@ -91,11 +91,11 @@ public class Produit {
         return Objects.hash(idproduit, idcategorie, nom, description, prix, image);
     }
 
-    public Collection<Produitfastfood> getProduitfastfoodsByIdproduit() {
+    public List<Produitfastfood> getProduitfastfoodsByIdproduit() {
         return produitfastfoodsByIdproduit;
     }
 
-    public void setProduitfastfoodsByIdproduit(Collection<Produitfastfood> produitfastfoodsByIdproduit) {
+    public void setProduitfastfoodsByIdproduit(List<Produitfastfood> produitfastfoodsByIdproduit) {
         this.produitfastfoodsByIdproduit = produitfastfoodsByIdproduit;
     }
 }

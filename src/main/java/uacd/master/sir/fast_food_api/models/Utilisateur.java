@@ -2,7 +2,7 @@ package uacd.master.sir.fast_food_api.models;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -24,11 +24,11 @@ public class Utilisateur {
     @Column(name = "password", nullable = true, length = 254)
     private String password;
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
-    private Collection<Commande> commandesByIdutilisateur;
+    private List<Commande> commandesByIdutilisateur;
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
-    private Collection<Fastfood> fastfoodsByIdutilisateur;
+    private List<Fastfood> fastfoodsByIdutilisateur;
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
-    private Collection<Roleutilisateur> roleutilisateursByIdutilisateur;
+    private List<Roleutilisateur> roleutilisateursByIdutilisateur;
 
     public int getIdutilisateur() {
         return idutilisateur;
@@ -83,27 +83,27 @@ public class Utilisateur {
         return Objects.hash(idutilisateur, prenom, nom, email, password);
     }
 
-    public Collection<Commande> getCommandesByIdutilisateur() {
+    public List<Commande> getCommandesByIdutilisateur() {
         return commandesByIdutilisateur;
     }
 
-    public void setCommandesByIdutilisateur(Collection<Commande> commandesByIdutilisateur) {
+    public void setCommandesByIdutilisateur(List<Commande> commandesByIdutilisateur) {
         this.commandesByIdutilisateur = commandesByIdutilisateur;
     }
 
-    public Collection<Fastfood> getFastfoodsByIdutilisateur() {
+    public List<Fastfood> getFastfoodsByIdutilisateur() {
         return fastfoodsByIdutilisateur;
     }
 
-    public void setFastfoodsByIdutilisateur(Collection<Fastfood> fastfoodsByIdutilisateur) {
+    public void setFastfoodsByIdutilisateur(List<Fastfood> fastfoodsByIdutilisateur) {
         this.fastfoodsByIdutilisateur = fastfoodsByIdutilisateur;
     }
 
-    public Collection<Roleutilisateur> getRoleutilisateursByIdutilisateur() {
+    public List<Roleutilisateur> getRoleutilisateursByIdutilisateur() {
         return roleutilisateursByIdutilisateur;
     }
 
-    public void setRoleutilisateursByIdutilisateur(Collection<Roleutilisateur> roleutilisateursByIdutilisateur) {
+    public void setRoleutilisateursByIdutilisateur(List<Roleutilisateur> roleutilisateursByIdutilisateur) {
         this.roleutilisateursByIdutilisateur = roleutilisateursByIdutilisateur;
     }
 }
