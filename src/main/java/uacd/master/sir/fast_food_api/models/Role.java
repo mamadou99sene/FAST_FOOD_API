@@ -2,7 +2,7 @@ package uacd.master.sir.fast_food_api.models;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +18,7 @@ public class Role {
     @Column(name = "description", nullable = true, length = 254)
     private String description;
     @OneToMany(mappedBy = "roleByIdrole")
-    private Collection<Roleutilisateur> roleutilisateursByIdrole;
+    private List<Roleutilisateur> roleutilisateursByIdrole;
 
     public int getIdrole() {
         return idrole;
@@ -57,11 +57,11 @@ public class Role {
         return Objects.hash(idrole, role, description);
     }
 
-    public Collection<Roleutilisateur> getRoleutilisateursByIdrole() {
+    public List<Roleutilisateur> getRoleutilisateursByIdrole() {
         return roleutilisateursByIdrole;
     }
 
-    public void setRoleutilisateursByIdrole(Collection<Roleutilisateur> roleutilisateursByIdrole) {
+    public void setRoleutilisateursByIdrole(List<Roleutilisateur> roleutilisateursByIdrole) {
         this.roleutilisateursByIdrole = roleutilisateursByIdrole;
     }
 }
