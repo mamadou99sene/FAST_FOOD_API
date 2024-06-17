@@ -1,6 +1,6 @@
 package uacd.master.sir.fast_food_api.enums;
 
-public enum Role {
+public enum RoleEnum {
     USER,
     MANAGER,
     ADMIN
