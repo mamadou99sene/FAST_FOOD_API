@@ -8,9 +8,12 @@ import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
 import uacd.master.sir.fast_food_api.models.Roleutilisateur;
 import uacd.master.sir.fast_food_api.models.Utilisateur;
+import uacd.master.sir.fast_food_api.models.UtilisateurConfirmation;
 import uacd.master.sir.fast_food_api.repositories.RoleRepository;
 import uacd.master.sir.fast_food_api.repositories.RoleUtilisateurRepository;
+import uacd.master.sir.fast_food_api.repositories.UtilisateurConfirmationRepository;
 import uacd.master.sir.fast_food_api.repositories.UtilisateurRepository;
+import uacd.master.sir.fast_food_api.services.EmailService;
 import uacd.master.sir.fast_food_api.services.RoleUtilisateurService;
 import uacd.master.sir.fast_food_api.services.UtilisateurService;
 import uacd.master.sir.fast_food_api.utils.Mapper;
@@ -26,6 +29,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private final RoleUtilisateurRepository roleUtilisateurRepository;
     private final RoleUtilisateurService roleUtilisateurService;
     private final RoleRepository roleRepository;
+    private final UtilisateurConfirmationRepository confirmationRepository;
+    private final EmailService emailService;
 
     @Override
     public UtilisateurResponseDTO create(UtilisateurRequestDTO requestDTO) {
@@ -33,15 +38,33 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         UtilisateurResponseDTO responseDTO = new UtilisateurResponseDTO();
         Utilisateur utilisateur = new Utilisateur();
 
+
+        utilisateur.setEnabled(false);
         utilisateur = utilisateurRepository.save(Mapper.mapToEntityUtilisateur(utilisateur, requestDTO));
+
+        UtilisateurConfirmation utilisateurConfirmation = new UtilisateurConfirmation(utilisateur);
 
         RoleUtilisateurRequestDTO role = new RoleUtilisateurRequestDTO();
         role.setUtilisateur(utilisateur);
         role.setRole(roleRepository.findRoleByIdrole(1));
 
         roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
+        confirmationRepository.save(utilisateurConfirmation);
+
+        emailService.sendSimpleMessage(utilisateur.getPrenom(), utilisateur.getEmail(), utilisateurConfirmation.getToken());
 
         return Mapper.mapToUtilisateurResponse(utilisateur, responseDTO);
+    }
+
+    @Override
+    public Boolean verifyToken(String token) {
+
+        UtilisateurConfirmation confirmation = confirmationRepository.findByToken(token);
+
+        Utilisateur user = utilisateurRepository.findByEmailIgnoreCase(confirmation.getUtilisateur().getEmail());
+        user.setEnabled(true);
+        utilisateurRepository.save(user);
+        return Boolean.TRUE;
     }
 
     @Override
@@ -79,6 +102,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         UtilisateurResponseDTO responseDTO = new UtilisateurResponseDTO();
         return Mapper.mapToUtilisateurResponse(utilisateurRepository.findUtilisateurByIdutilisateur(id), responseDTO);
     }
+
+
 
 
 }

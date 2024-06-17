@@ -8,9 +8,12 @@ import java.util.List;
 
 public interface UtilisateurService {
 
-    public UtilisateurResponseDTO create(UtilisateurRequestDTO requestDTO);
-    public String delete(int id);
-    public UtilisateurResponseDTO update(int id, UtilisateurRequestDTO requestDTO);
-    public List<UtilisateurResponseDTO> readAll();
-    public UtilisateurResponseDTO readById(int id);
+    UtilisateurResponseDTO create(UtilisateurRequestDTO requestDTO);
+    String delete(int id);
+    UtilisateurResponseDTO update(int id, UtilisateurRequestDTO requestDTO);
+    List<UtilisateurResponseDTO> readAll();
+    UtilisateurResponseDTO readById(int id);
+    Boolean verifyToken(String token);
+
+
 }

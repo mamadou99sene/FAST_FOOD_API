@@ -23,12 +23,24 @@ public class Utilisateur {
     @Basic
     @Column(name = "password", nullable = true, length = 254)
     private String password;
+    @Basic
+    @Column(nullable = true)
+    private boolean isEnabled;
+
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
     private List<Commande> commandesByIdutilisateur;
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
     private List<Fastfood> fastfoodsByIdutilisateur;
     @OneToMany(mappedBy = "utilisateurByIdutilisateur")
     private List<Roleutilisateur> roleutilisateursByIdutilisateur;
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
 
     public int getIdutilisateur() {
         return idutilisateur;

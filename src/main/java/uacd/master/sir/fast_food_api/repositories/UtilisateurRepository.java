@@ -6,6 +6,8 @@ import uacd.master.sir.fast_food_api.models.Utilisateur;
 
 @Repository
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
-    public Utilisateur findUtilisateurByIdutilisateur(int id);
-//    public Utilisateur updateUtilisateurByIdutilisateur(Long id);
+
+    Utilisateur findUtilisateurByIdutilisateur(int id);
+    Utilisateur findByEmailIgnoreCase(String email);
+    Boolean existsByEmail(String email);
 }

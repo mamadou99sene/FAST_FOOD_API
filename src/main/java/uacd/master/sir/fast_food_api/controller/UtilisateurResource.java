@@ -41,6 +41,22 @@ public class UtilisateurResource {
         );
     }
 
+    @GetMapping
+    public ResponseEntity<HttpResponse> confirmUserAccount(@RequestParam("token") String token){
+        Boolean isSuccess = utilisateurService.verifyToken(token);
+
+        return ResponseEntity.created(URI.create("")).body(
+
+                HttpResponse.builder()
+                        .timeStamp(LocalDateTime.now().toString())
+                        .data(Map.of("success", isSuccess))
+                        .message("Account verified!")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .build()
+        );
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<HttpResponse> update(@PathVariable int id, @RequestBody UtilisateurRequestDTO utilisateur) {
         UtilisateurResponseDTO updatedUser = utilisateurService.update(id, utilisateur);
@@ -71,7 +87,7 @@ public class UtilisateurResource {
         );
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<HttpResponse> readAll() {
         List<UtilisateurResponseDTO> utilisateurs = utilisateurService.readAll();
 
