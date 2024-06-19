@@ -13,6 +13,7 @@ public class RoleutilisateurPK implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idutilisateur;
+
     @Column(name = "idrole", nullable = false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
