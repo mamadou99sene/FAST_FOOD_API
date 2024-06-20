@@ -16,4 +16,5 @@ public class UtilisateurRequestDTO {
     private String nom;
     private String email;
     private String password;
+    private String type;
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 public class Utilisateur {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idutilisateur", nullable = false)
     private int idutilisateur;

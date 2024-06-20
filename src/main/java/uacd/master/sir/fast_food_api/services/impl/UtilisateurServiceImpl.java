@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import uacd.master.sir.fast_food_api.dto.RoleUtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
+import uacd.master.sir.fast_food_api.enums.RoleEnum;
 import uacd.master.sir.fast_food_api.models.Roleutilisateur;
 import uacd.master.sir.fast_food_api.models.Utilisateur;
 import uacd.master.sir.fast_food_api.models.UtilisateurConfirmation;
@@ -34,6 +35,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public UtilisateurResponseDTO create(UtilisateurRequestDTO requestDTO) {
 
+        //mettre cette partie sous forme de transactions plus tard
         UtilisateurResponseDTO responseDTO = new UtilisateurResponseDTO();
         Utilisateur utilisateur = new Utilisateur();
 
@@ -45,8 +47,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         RoleUtilisateurRequestDTO role = new RoleUtilisateurRequestDTO();
         role.setUtilisateur(utilisateur);
-        role.setRole(roleRepository.findRoleByIdrole(1));
-
+        if (requestDTO.getType()=="client")
+            role.setRole(roleRepository.findRoleByIdrole(RoleEnum.CLIENT.ordinal()));
+        else
+            role.setRole(roleRepository.findRoleByIdrole(RoleEnum.MANAGER.ordinal()));
         roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
         confirmationRepository.save(utilisateurConfirmation);
 
@@ -101,8 +105,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         UtilisateurResponseDTO responseDTO = new UtilisateurResponseDTO();
         return Mapper.mapToUtilisateurResponse(utilisateurRepository.findUtilisateurByIdutilisateur(id), responseDTO);
     }
-
-
 
 
 }

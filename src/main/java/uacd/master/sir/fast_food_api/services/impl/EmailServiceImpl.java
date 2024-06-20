@@ -21,6 +21,7 @@ public class EmailServiceImpl implements EmailService{
 
     @Value("${spring.mail.username}")
     private String fromEmail;
+
     private final JavaMailSender emailSender;
 
     @Override
