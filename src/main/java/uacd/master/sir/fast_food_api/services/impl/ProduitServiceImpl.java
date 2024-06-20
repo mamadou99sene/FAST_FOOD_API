@@ -1,10 +1,10 @@
-package uacd.master.sir.fast_food_api.Services.impl;
+package uacd.master.sir.fast_food_api.services.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import uacd.master.sir.fast_food_api.DTO.ProduitRequestDTO;
 import uacd.master.sir.fast_food_api.DTO.ProduitResponseDTO;
-import uacd.master.sir.fast_food_api.Services.ProduitService;
+import uacd.master.sir.fast_food_api.services.ProduitService;
 import uacd.master.sir.fast_food_api.models.Produit;
 import uacd.master.sir.fast_food_api.repositories.ProduitRepository;
 
@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class ProduitServiceImpl implements ProduitService {
-    @Autowired
     private ProduitRepository produitRepository;
 
     public List<ProduitResponseDTO> getAllProduits()

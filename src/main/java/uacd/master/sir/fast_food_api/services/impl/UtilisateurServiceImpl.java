@@ -18,7 +18,6 @@ import uacd.master.sir.fast_food_api.services.RoleUtilisateurService;
 import uacd.master.sir.fast_food_api.services.UtilisateurService;
 import uacd.master.sir.fast_food_api.utils.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

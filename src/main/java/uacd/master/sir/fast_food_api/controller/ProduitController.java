@@ -1,21 +1,21 @@
 package uacd.master.sir.fast_food_api.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uacd.master.sir.fast_food_api.DTO.ProduitRequestDTO;
 import uacd.master.sir.fast_food_api.DTO.ProduitResponseDTO;
-import uacd.master.sir.fast_food_api.Services.impl.ProduitServiceImpl;
+import uacd.master.sir.fast_food_api.services.ProduitService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/produit",produces = MediaType.APPLICATION_JSON_VALUE)
+@AllArgsConstructor
 public class ProduitController {
-    @Autowired
-    private ProduitServiceImpl produitService;
+    final private ProduitService produitService;
     @GetMapping
     public ResponseEntity<List<ProduitResponseDTO>> getAllProduit()
     {
