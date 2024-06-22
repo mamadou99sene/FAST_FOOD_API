@@ -6,13 +6,16 @@ import java.util.Objects;
 
 @Entity
 public class Fastfood {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idfastfood", nullable = false)
     private int idfastfood;
+
     @Basic
     @Column(name = "idutilisateur", nullable = false)
     private int idutilisateur;
+
     @Basic
     @Column(name = "nom", nullable = true, length = 254)
     private String nom;
@@ -22,11 +25,14 @@ public class Fastfood {
     @Basic
     @Column(name = "localisation", nullable = true, length = 254)
     private String localisation;
+
     @ManyToOne
     @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur", nullable = false, insertable = false, updatable = false)
     private Utilisateur utilisateurByIdutilisateur;
+
     @OneToMany(mappedBy = "fastfoodByIdfastfood")
     private List<Commandefastfood> commandefastfoodsByIdfastfood;
+
     @OneToMany(mappedBy = "fastfoodByIdfastfood")
     private List<Produitfastfood> produitfastfoodsByIdfastfood;
 
