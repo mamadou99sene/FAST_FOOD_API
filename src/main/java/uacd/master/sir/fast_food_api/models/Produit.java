@@ -24,9 +24,14 @@ public class Produit {
     @Basic
     @Column(name = "prix", nullable = true, precision = 0)
     private BigInteger prix;
-    @Basic
-    @Column(name = "image", nullable = true, length = 254)
-    private String image;
+
+//    @Basic
+//    @Column(name = "image", nullable = true, length = 254)
+//    private String image;
+
+    @OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
+    private List<ImageProduit> imageProduits;
+
     @OneToMany(mappedBy = "produitByIdproduit")
     private List<Produitfastfood> produitfastfoodsByIdproduit;
 
@@ -70,32 +75,32 @@ public class Produit {
         this.prix = prix;
     }
 
-    public String getImage() {
-        return image;
-    }
+//    public String getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Produit produit = (Produit) o;
+//        return idproduit == produit.idproduit && idcategorie == produit.idcategorie && Objects.equals(nom, produit.nom) && Objects.equals(description, produit.description) && Objects.equals(prix, produit.prix) && Objects.equals(image, produit.image);
+//    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Produit produit = (Produit) o;
-        return idproduit == produit.idproduit && idcategorie == produit.idcategorie && Objects.equals(nom, produit.nom) && Objects.equals(description, produit.description) && Objects.equals(prix, produit.prix) && Objects.equals(image, produit.image);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idproduit, idcategorie, nom, description, prix, image);
-    }
-
-    public List<Produitfastfood> getProduitfastfoodsByIdproduit() {
-        return produitfastfoodsByIdproduit;
-    }
-
-    public void setProduitfastfoodsByIdproduit(List<Produitfastfood> produitfastfoodsByIdproduit) {
-        this.produitfastfoodsByIdproduit = produitfastfoodsByIdproduit;
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(idproduit, idcategorie, nom, description, prix, image);
+//    }
+//
+//    public List<Produitfastfood> getProduitfastfoodsByIdproduit() {
+//        return produitfastfoodsByIdproduit;
+//    }
+//
+//    public void setProduitfastfoodsByIdproduit(List<Produitfastfood> produitfastfoodsByIdproduit) {
+//        this.produitfastfoodsByIdproduit = produitfastfoodsByIdproduit;
+//    }
 }

@@ -2,14 +2,15 @@ package uacd.master.sir.fast_food_api.services.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import uacd.master.sir.fast_food_api.DTO.FastFoodRequestDTO;
-import uacd.master.sir.fast_food_api.DTO.FastFoodResponseDTO;
+import uacd.master.sir.fast_food_api.dto.FastFoodRequestDTO;
+import uacd.master.sir.fast_food_api.dto.FastFoodResponseDTO;
 import uacd.master.sir.fast_food_api.services.FastFoodService;
 import uacd.master.sir.fast_food_api.models.Fastfood;
 import uacd.master.sir.fast_food_api.repositories.FastFoodRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class FastFoodServiceImpl implements FastFoodService {
@@ -37,7 +38,7 @@ public class FastFoodServiceImpl implements FastFoodService {
     @Override
     public FastFoodResponseDTO saveFastFood(FastFoodRequestDTO fastFoodRequestDTO) {
 
-        Fastfood fastfood=this.convertToEntity(fastFoodRequestDTO);
+        Fastfood fastfood = this.convertToEntity(fastFoodRequestDTO);
         fastFoodRepository.save(fastfood);
         return convertToDTO(fastfood);
     }
@@ -46,6 +47,7 @@ public class FastFoodServiceImpl implements FastFoodService {
     public FastFoodResponseDTO updateFastFood(FastFoodRequestDTO fastFoodRequestDTO, int idFastFood) {
 
         Fastfood fastfood=fastFoodRepository.findById(idFastFood).orElse(null);
+
         if(fastfood!=null)
         {
             fastfood.setIdutilisateur(fastFoodRequestDTO.getIdutilisateur());
@@ -70,8 +72,8 @@ public class FastFoodServiceImpl implements FastFoodService {
     }
 
 
-    public FastFoodResponseDTO convertToDTO(Fastfood fastfood)
-    {
+    public FastFoodResponseDTO convertToDTO(Fastfood fastfood){
+
        FastFoodResponseDTO dto=new FastFoodResponseDTO();
         dto.setIdfastfood(fastfood.getIdfastfood());
         dto.setIdutilisateur(fastfood.getIdutilisateur());
@@ -80,14 +82,22 @@ public class FastFoodServiceImpl implements FastFoodService {
         dto.setLocalisation(fastfood.getLocalisation());
         return  dto;
     }
-    public  Fastfood convertToEntity(FastFoodRequestDTO fastFoodRequestDTO)
-    {
+
+    public  Fastfood convertToEntity(FastFoodRequestDTO fastFoodRequestDTO){
+
         Fastfood fastfood=new Fastfood();
         fastfood.setIdutilisateur(1);
         fastfood.setNom(fastFoodRequestDTO.getNom());
         fastfood.setDescription(fastFoodRequestDTO.getDescription());
         fastfood.setLocalisation(fastFoodRequestDTO.getLocalisation());
+
+//        fastfood.setNom("KEUR COULY");
+//        fastfood.setDescription("Keur Couly Nekha Lekké");
+//        fastfood.setLocalisation("Guédiawaye");
+
+
         return fastfood;
+
     }
 
 }

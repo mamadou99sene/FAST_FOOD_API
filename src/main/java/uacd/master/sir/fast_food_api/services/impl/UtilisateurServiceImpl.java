@@ -3,6 +3,7 @@ package uacd.master.sir.fast_food_api.services.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import uacd.master.sir.fast_food_api.dto.RoleUtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
@@ -32,6 +33,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     private final UtilisateurConfirmationRepository confirmationRepository;
     private final EmailService emailService;
 
+
     @Override
     public UtilisateurResponseDTO create(UtilisateurRequestDTO requestDTO) {
 
@@ -47,10 +49,18 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         RoleUtilisateurRequestDTO role = new RoleUtilisateurRequestDTO();
         role.setUtilisateur(utilisateur);
-        if (requestDTO.getType()=="client")
-            role.setRole(roleRepository.findRoleByIdrole(RoleEnum.CLIENT.ordinal()));
-        else
-            role.setRole(roleRepository.findRoleByIdrole(RoleEnum.MANAGER.ordinal()));
+
+        String userType = requestDTO.getType();
+
+        if (userType != null){
+            if (userType.equalsIgnoreCase("client"))
+                role.setRole(roleRepository.findRoleByIdrole(RoleEnum.CLIENT.ordinal()+1));
+        }else{
+            role.setRole(roleRepository.findRoleByIdrole(RoleEnum.MANAGER.ordinal()+1));
+        }
+
+
+
         roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
         confirmationRepository.save(utilisateurConfirmation);
 

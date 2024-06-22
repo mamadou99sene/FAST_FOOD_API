@@ -1,7 +1,7 @@
 package uacd.master.sir.fast_food_api.services;
 
-import uacd.master.sir.fast_food_api.DTO.FastFoodRequestDTO;
-import uacd.master.sir.fast_food_api.DTO.FastFoodResponseDTO;
+import uacd.master.sir.fast_food_api.dto.FastFoodRequestDTO;
+import uacd.master.sir.fast_food_api.dto.FastFoodResponseDTO;
 import uacd.master.sir.fast_food_api.models.Fastfood;
 
 import java.util.List;
