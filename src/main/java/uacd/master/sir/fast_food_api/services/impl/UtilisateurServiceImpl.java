@@ -59,8 +59,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
             role.setRole(roleRepository.findRoleByIdrole(RoleEnum.MANAGER.ordinal()+1));
         }
 
-
-
         roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
         confirmationRepository.save(utilisateurConfirmation);
 
