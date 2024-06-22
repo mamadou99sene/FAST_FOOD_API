@@ -58,15 +58,22 @@ public class FastFoodServiceImpl implements FastFoodService {
     }
 
     @Override
-    public boolean deleteFastFood(FastFoodRequestDTO fastFoodRequestDTO) {
+    public boolean deleteFastFood(int idFastFood) {
 
-        fastFoodRepository.delete(this.convertToEntity(fastFoodRequestDTO));
+        Fastfood fastfood=fastFoodRepository.findById(idFastFood).get();
+        fastFoodRepository.delete(fastfood);
         return true;
     }
 
     @Override
-    public List<FastFoodResponseDTO> getFastFoodsByName() {
-        return null;
+    public List<FastFoodResponseDTO> getFastFoodsByName(String nom) {
+
+      return   this.fastFoodRepository.
+              findFastfoodByNomContainingIgnoreCase(nom).
+                stream().
+                map(this::convertToDTO).
+                collect
+                        (Collectors.toList());
     }
 
 
@@ -83,7 +90,7 @@ public class FastFoodServiceImpl implements FastFoodService {
     public  Fastfood convertToEntity(FastFoodRequestDTO fastFoodRequestDTO)
     {
         Fastfood fastfood=new Fastfood();
-        fastfood.setIdutilisateur(1);
+        fastfood.setIdutilisateur(fastFoodRequestDTO.getIdutilisateur());
         fastfood.setNom(fastFoodRequestDTO.getNom());
         fastfood.setDescription(fastFoodRequestDTO.getDescription());
         fastfood.setLocalisation(fastFoodRequestDTO.getLocalisation());
