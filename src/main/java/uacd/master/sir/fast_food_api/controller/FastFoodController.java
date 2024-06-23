@@ -1,17 +1,11 @@
 package uacd.master.sir.fast_food_api.controller;
 
-import jakarta.websocket.server.PathParam;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
-import uacd.master.sir.fast_food_api.DTO.FastFoodRequestDTO;
-import uacd.master.sir.fast_food_api.DTO.FastFoodResponseDTO;
-=======
 import uacd.master.sir.fast_food_api.dto.FastFoodRequestDTO;
 import uacd.master.sir.fast_food_api.dto.FastFoodResponseDTO;
->>>>>>> ef00c7cadfb0ee2ed8fe19f5d6e009b7cc71add0
 import uacd.master.sir.fast_food_api.services.FastFoodService;
 
 import java.util.List;

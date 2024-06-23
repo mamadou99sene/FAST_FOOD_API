@@ -1,7 +1,9 @@
 HELP.md
 target/
+.secrets/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+!**/src/main/**/secrets/
 !**/src/test/**/target/
 
 ### STS ###
