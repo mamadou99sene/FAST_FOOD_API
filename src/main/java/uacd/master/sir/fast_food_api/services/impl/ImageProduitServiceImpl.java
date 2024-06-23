@@ -3,8 +3,8 @@ package uacd.master.sir.fast_food_api.services.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import uacd.master.sir.fast_food_api.dto.ImageProduitRequestDTO;
-import uacd.master.sir.fast_food_api.dto.ImageProduitResponseDTO;
+//import uacd.master.sir.fast_food_api.dto.ImageProduitRequestDTO;
+//import uacd.master.sir.fast_food_api.dto.ImageProduitResponseDTO;
 import uacd.master.sir.fast_food_api.repositories.ImageProduitRepository;
 import uacd.master.sir.fast_food_api.services.ImageProduitService;
 
@@ -16,15 +16,15 @@ public class ImageProduitServiceImpl implements ImageProduitService {
 
     private final ImageProduitRepository imageProduitRepository;
 
-    @Override
-    public void createImageProduitWithAllImageList(List<ImageProduitRequestDTO> imageProduitRequestDTOS) {
+//    @Override
+//    public void createImageProduitWithAllImageList(List<ImageProduitRequestDTO> imageProduitRequestDTOS) {
+//
+//    }
 
-    }
-
-    @Override
-    public List<ImageProduitResponseDTO> findAllUrlByProduitId(Long produitId) {
-        return null;
-    }
+//    @Override
+//    public List<ImageProduitResponseDTO> findAllUrlByProduitId(Long produitId) {
+//        return null;
+//    }
 
     @Override
     public MediaType determineImageMediaType(String imageName) {

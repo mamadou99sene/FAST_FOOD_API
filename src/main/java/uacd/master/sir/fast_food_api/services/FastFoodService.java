@@ -11,8 +11,6 @@ public interface FastFoodService {
     FastFoodResponseDTO getfastFoodById(int idFastFood);
     FastFoodResponseDTO saveFastFood(FastFoodRequestDTO fastFoodRequestDTO);
     FastFoodResponseDTO updateFastFood(FastFoodRequestDTO fastFoodRequestDTO, int idFastFood);
-    boolean deleteFastFood(FastFoodRequestDTO fastFoodRequestDTO);
-    List<FastFoodResponseDTO> getFastFoodsByName();
-    FastFoodResponseDTO convertToDTO(Fastfood fastfood);
-    Fastfood convertToEntity(FastFoodRequestDTO fastFoodRequestDTO);
+    boolean deleteFastFood(int idFastFood);
+    List<FastFoodResponseDTO> getFastFoodsByName(String nom);
 }

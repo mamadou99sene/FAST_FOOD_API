@@ -65,9 +65,9 @@ public class ProduitController {
         boolean deleted=produitService.deleteProduit(idProduit);
         if(!deleted)
         {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity(HttpStatus.GONE);
         }
-        return new ResponseEntity(deleted,HttpStatus.GONE);
+        return new ResponseEntity(deleted,HttpStatus.OK);
     }
 
     // Endpoint pour ajouter une image à un produit
