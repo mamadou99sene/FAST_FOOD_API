@@ -1,5 +1,7 @@
 package uacd.master.sir.fast_food_api.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uacd.master.sir.fast_food_api.DTO.CommandeRequestDTO;
@@ -8,10 +10,10 @@ import uacd.master.sir.fast_food_api.services.CommandeService;
 
 import java.util.List;
 
-@RestController
+@RestController @RequiredArgsConstructor
 @RequestMapping("/api/commandes")
 public class CommandeController {
-    private CommandeService commandeService;
+    private final CommandeService commandeService;
     @PostMapping
     public ResponseEntity<CommandeResponseDTO> createCommande(@RequestBody CommandeRequestDTO commandeRequestDTO) {
         CommandeResponseDTO responseDTO = commandeService.createCommande(commandeRequestDTO);

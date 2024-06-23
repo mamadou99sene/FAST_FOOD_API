@@ -1,5 +1,8 @@
 package uacd.master.sir.fast_food_api.services.impl;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import uacd.master.sir.fast_food_api.DTO.CommandeRequestDTO;
 import uacd.master.sir.fast_food_api.DTO.CommandeResponseDTO;
 import uacd.master.sir.fast_food_api.models.Commande;
@@ -9,9 +12,10 @@ import uacd.master.sir.fast_food_api.services.CommandeService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service @RequiredArgsConstructor
 public class CommandeServiceImpl implements CommandeService {
 
-    private CommandeRepository commandeRepository;
+    private final CommandeRepository commandeRepository;
     @Override
     public CommandeResponseDTO createCommande(CommandeRequestDTO commandeRequestDTO) {
         Commande commande = new Commande();
