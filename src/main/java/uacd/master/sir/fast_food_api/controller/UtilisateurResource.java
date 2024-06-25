@@ -102,6 +102,20 @@ public class UtilisateurResource {
         );
     }
 
+    @PostMapping("/auth")
+    public ResponseEntity<HttpResponse> authenticate(@RequestBody UtilisateurRequestDTO utilisateur){
+        UtilisateurResponseDTO responseDTO = utilisateurService.verifyByEmail(utilisateur);
+        return ResponseEntity.ok().body(
+                HttpResponse.builder()
+                        .timeStamp(LocalDateTime.now().toString())
+                        .data(Map.of("Utilisateurs", responseDTO==null?"[]": responseDTO))
+                        .message(responseDTO==null?"Aucun correspondant":"Accès autorisé!")
+                        .status(HttpStatus.OK)
+                        .statusCode(HttpStatus.OK.value())
+                        .build()
+        );
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpResponse> delete(@PathVariable int id) {

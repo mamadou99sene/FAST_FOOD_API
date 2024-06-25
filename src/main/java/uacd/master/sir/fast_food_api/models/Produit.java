@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 public class Produit {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idproduit", nullable = false)
     private int idproduit;
