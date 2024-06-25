@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.view.RedirectView;
 import uacd.master.sir.fast_food_api.dto.RoleUtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
@@ -75,6 +76,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         Utilisateur user = utilisateurRepository.findByEmailIgnoreCase(confirmation.getUtilisateur().getEmail());
         user.setEnabled(true);
         utilisateurRepository.save(user);
+//        new RedirectView("http://localhost:4200/");
         return Boolean.TRUE;
     }
 
