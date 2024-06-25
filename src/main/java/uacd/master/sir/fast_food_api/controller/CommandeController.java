@@ -1,11 +1,11 @@
 package uacd.master.sir.fast_food_api.controller;
 
-import lombok.AllArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uacd.master.sir.fast_food_api.DTO.CommandeRequestDTO;
-import uacd.master.sir.fast_food_api.DTO.CommandeResponseDTO;
+import uacd.master.sir.fast_food_api.dto.CommandeRequestDTO;
+import uacd.master.sir.fast_food_api.dto.CommandeResponseDTO;
 import uacd.master.sir.fast_food_api.services.CommandeService;
 
 import java.util.List;

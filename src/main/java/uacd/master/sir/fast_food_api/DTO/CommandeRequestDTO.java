@@ -1,4 +1,4 @@
-package uacd.master.sir.fast_food_api.DTO;
+package uacd.master.sir.fast_food_api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
