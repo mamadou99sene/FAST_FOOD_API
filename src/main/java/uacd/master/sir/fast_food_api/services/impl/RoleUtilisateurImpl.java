@@ -66,5 +66,4 @@ public class RoleUtilisateurImpl implements RoleUtilisateurService {
     }
 
 
-
 }
