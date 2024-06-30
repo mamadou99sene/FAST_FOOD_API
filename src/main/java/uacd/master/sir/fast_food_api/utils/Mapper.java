@@ -1,8 +1,10 @@
 package uacd.master.sir.fast_food_api.utils;
 
+import uacd.master.sir.fast_food_api.dto.RoleResponseDTO;
 import uacd.master.sir.fast_food_api.dto.RoleUtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
+import uacd.master.sir.fast_food_api.models.Role;
 import uacd.master.sir.fast_food_api.models.Roleutilisateur;
 import uacd.master.sir.fast_food_api.models.Utilisateur;
 
@@ -34,5 +36,14 @@ public class Mapper {
         roleutilisateur.setRoleByIdrole(requestDTO.getRole());
 
         return roleutilisateur;
+    }
+
+    public static RoleResponseDTO mapToRoleResponse(Role role, RoleResponseDTO responseDTO){
+
+        responseDTO.setId(role.getIdrole());
+        responseDTO.setRole(role.getRole());
+        responseDTO.setDescription(role.getDescription());
+
+        return responseDTO;
     }
 }

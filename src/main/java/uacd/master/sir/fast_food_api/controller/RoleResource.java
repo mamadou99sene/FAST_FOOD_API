@@ -2,12 +2,13 @@ package uacd.master.sir.fast_food_api.controller;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import uacd.master.sir.fast_food_api.dto.RoleResponseDTO;
 import uacd.master.sir.fast_food_api.models.Role;
 import uacd.master.sir.fast_food_api.services.RoleService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -21,4 +22,9 @@ public class RoleResource {
         return roleService.create(role);
     }
 
+    @GetMapping("/utilisateur/{idutilisateur}")
+    public ResponseEntity<List<RoleResponseDTO>> getRolesByUtilisateurId(@PathVariable int idutilisateur) {
+        List<RoleResponseDTO> roles = roleService.getRolesByUtilisateurId(idutilisateur);
+        return ResponseEntity.ok(roles);
+    }
 }
