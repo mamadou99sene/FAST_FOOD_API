@@ -7,11 +7,9 @@ import java.util.Objects;
 @Entity
 @IdClass(ProduitfastfoodPK.class)
 public class Produitfastfood {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idproduit", nullable = false)
     private int idproduit;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idfastfood", nullable = false)
     private int idfastfood;
