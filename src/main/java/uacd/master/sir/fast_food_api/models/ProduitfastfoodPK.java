@@ -10,12 +10,8 @@ import java.util.Objects;
 
 public class ProduitfastfoodPK implements Serializable {
     @Column(name = "idproduit", nullable = false)
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idproduit;
     @Column(name = "idfastfood", nullable = false)
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idfastfood;
 
     public int getIdproduit() {

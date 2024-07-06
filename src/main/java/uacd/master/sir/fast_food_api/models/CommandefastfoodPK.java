@@ -18,6 +18,13 @@ public class CommandefastfoodPK implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idfastfood;
 
+    public CommandefastfoodPK() {}
+
+    public CommandefastfoodPK(int idcommande, int idfastfood) {
+        this.idcommande = idcommande;
+        this.idfastfood = idfastfood;
+    }
+
     public int getIdcommande() {
         return idcommande;
     }

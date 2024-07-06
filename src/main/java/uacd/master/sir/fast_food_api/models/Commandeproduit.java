@@ -25,12 +25,23 @@ public class Commandeproduit {
     @Column(name = "idproduit", nullable = false)
     private int idproduit;
 
+    @ManyToOne
+    @JoinColumn(name = "idproduit", referencedColumnName = "idproduit", insertable = false, updatable = false)
+    Produit produitByIdProduit;
+
     public int getIdproduit() {
         return idproduit;
     }
 
     public void setIdproduit(int idproduit) {
         this.idproduit = idproduit;
+    }
+    public Produit getProduitByIdProduit() {
+        return produitByIdProduit;
+    }
+
+    public void setProduitByIdProduit(Produit produitByIdProduit) {
+        this.produitByIdProduit = produitByIdProduit;
     }
 
     @Override
