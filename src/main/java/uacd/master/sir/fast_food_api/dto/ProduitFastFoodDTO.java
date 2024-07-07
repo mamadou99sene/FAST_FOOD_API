@@ -1,10 +1,8 @@
-package uacd.master.sir.fast_food_api.DTO;
-import com.fasterxml.jackson.annotation.JsonProperty;
+package uacd.master.sir.fast_food_api.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uacd.master.sir.fast_food_api.models.Fastfood;
 import uacd.master.sir.fast_food_api.models.Produit;
 
 @AllArgsConstructor

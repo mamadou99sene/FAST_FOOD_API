@@ -3,9 +3,7 @@ package uacd.master.sir.fast_food_api.services.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uacd.master.sir.fast_food_api.DTO.ProduitFastFoodDTO;
-import uacd.master.sir.fast_food_api.controller.ProduitController;
-import uacd.master.sir.fast_food_api.models.Fastfood;
+import uacd.master.sir.fast_food_api.dto.ProduitFastFoodDTO;
 import uacd.master.sir.fast_food_api.models.Produit;
 import uacd.master.sir.fast_food_api.models.Produitfastfood;
 import uacd.master.sir.fast_food_api.models.ProduitfastfoodPK;
@@ -15,7 +13,6 @@ import uacd.master.sir.fast_food_api.repositories.ProduitRepository;
 import uacd.master.sir.fast_food_api.services.ProduitFastFoodService;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor

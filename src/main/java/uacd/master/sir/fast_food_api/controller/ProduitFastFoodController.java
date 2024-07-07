@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uacd.master.sir.fast_food_api.DTO.ProduitFastFoodDTO;
+import uacd.master.sir.fast_food_api.dto.ProduitFastFoodDTO;
 import uacd.master.sir.fast_food_api.services.ProduitFastFoodService;
 
 import java.util.List;
