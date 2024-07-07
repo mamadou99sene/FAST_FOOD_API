@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import uacd.master.sir.fast_food_api.models.Produit;
 @Repository
 public interface ProduitRepository extends JpaRepository<Produit, Integer> {
+    Produit findProduitByIdproduit(int idproduit);
 }

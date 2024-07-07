@@ -15,7 +15,6 @@ public interface ProduitService {
     ProduitResponseDTO updateProduit(ProduitRequestDTO produitDTO, int idProduit);
     boolean deleteProduit(int idProduit);
     Produit convertToEntity(ProduitRequestDTO produitDTO);
-    ProduitResponseDTO convertToDTO(Produit produit);
 
     ProduitResponseDTO ajouterImageProduit(int produitId, MultipartFile imageFile);
     ProduitResponseDTO ajouterImagesProduit(int produitId, List<MultipartFile> imageFiles);

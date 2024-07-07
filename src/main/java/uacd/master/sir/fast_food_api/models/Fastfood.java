@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 public class Fastfood {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idfastfood", nullable = false)
     private int idfastfood;
@@ -33,8 +33,8 @@ public class Fastfood {
     @OneToMany(mappedBy = "fastfoodByIdfastfood")
     private List<Commandefastfood> commandefastfoodsByIdfastfood;
 
-    @OneToMany(mappedBy = "fastfoodByIdfastfood")
-    private List<Produitfastfood> produitfastfoodsByIdfastfood;
+//    @OneToMany(mappedBy = "fastfoodByIdfastfood")
+//    private List<Produitfastfood> produitfastfoodsByIdfastfood;
 
     public int getIdfastfood() {
         return idfastfood;
@@ -105,11 +105,11 @@ public class Fastfood {
         this.commandefastfoodsByIdfastfood = commandefastfoodsByIdfastfood;
     }
 
-    public List<Produitfastfood> getProduitfastfoodsByIdfastfood() {
-        return produitfastfoodsByIdfastfood;
-    }
-
-    public void setProduitfastfoodsByIdfastfood(List<Produitfastfood> produitfastfoodsByIdfastfood) {
-        this.produitfastfoodsByIdfastfood = produitfastfoodsByIdfastfood;
-    }
+//    public List<Produitfastfood> getProduitfastfoodsByIdfastfood() {
+//        return produitfastfoodsByIdfastfood;
+//    }
+//
+//    public void setProduitfastfoodsByIdfastfood(List<Produitfastfood> produitfastfoodsByIdfastfood) {
+//        this.produitfastfoodsByIdfastfood = produitfastfoodsByIdfastfood;
+//    }
 }

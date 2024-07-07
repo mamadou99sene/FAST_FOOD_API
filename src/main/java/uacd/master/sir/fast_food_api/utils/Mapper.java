@@ -1,9 +1,7 @@
 package uacd.master.sir.fast_food_api.utils;
 
-import uacd.master.sir.fast_food_api.dto.RoleResponseDTO;
-import uacd.master.sir.fast_food_api.dto.RoleUtilisateurRequestDTO;
-import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
-import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
+import uacd.master.sir.fast_food_api.dto.*;
+import uacd.master.sir.fast_food_api.models.Produit;
 import uacd.master.sir.fast_food_api.models.Role;
 import uacd.master.sir.fast_food_api.models.Roleutilisateur;
 import uacd.master.sir.fast_food_api.models.Utilisateur;
@@ -45,5 +43,18 @@ public class Mapper {
         responseDTO.setDescription(role.getDescription());
 
         return responseDTO;
+    }
+
+    public static ProduitResponseDTO convertToDTO(Produit produit)
+    {
+        ProduitResponseDTO dto = new ProduitResponseDTO();
+
+        dto.setIdproduit(produit.getIdproduit());
+        dto.setIdCategorie(produit.getIdcategorie());
+        dto.setNom(produit.getNom());
+        dto.setPrix(produit.getPrix());
+        dto.setDescription(produit.getDescription());
+//        dto.setImage(produit.getImage());
+        return  dto;
     }
 }

@@ -32,8 +32,8 @@ public class Produit {
     @OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
     private List<ImageProduit> imageProduits;
 
-    @OneToMany(mappedBy = "produitByIdproduit")
-    private List<Produitfastfood> produitfastfoodsByIdproduit;
+//    @OneToMany(mappedBy = "produitByIdproduit")
+//    private List<Produitfastfood> produitfastfoodsByIdproduit;
 
     public int getIdproduit() {
         return idproduit;

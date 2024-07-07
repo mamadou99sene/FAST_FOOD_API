@@ -1,6 +1,5 @@
 package uacd.master.sir.fast_food_api.services.impl;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -8,12 +7,12 @@ import org.springframework.web.multipart.MultipartFile;
 import uacd.master.sir.fast_food_api.dto.ProduitRequestDTO;
 import uacd.master.sir.fast_food_api.dto.ProduitResponseDTO;
 import uacd.master.sir.fast_food_api.models.ImageProduit;
-import uacd.master.sir.fast_food_api.repositories.ImageProduitRepository;
-import uacd.master.sir.fast_food_api.services.ProduitService;
 import uacd.master.sir.fast_food_api.models.Produit;
+import uacd.master.sir.fast_food_api.repositories.ImageProduitRepository;
 import uacd.master.sir.fast_food_api.repositories.ProduitRepository;
+import uacd.master.sir.fast_food_api.services.ProduitService;
+import uacd.master.sir.fast_food_api.utils.Mapper;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -72,7 +71,7 @@ public class ProduitServiceImpl implements ProduitService {
                 imageProduit.setProduit(produit);
                 imageProduitRepository.save(imageProduit); // Sauvegarde de l'objet ImageProduit dans la base de données
 
-                return convertToDTO(produit);
+                return Mapper.convertToDTO(produit);
 
             } catch (IOException e) {
                 throw new RuntimeException("Erreur lors de l'enregistrement de l'image", e);
@@ -119,7 +118,7 @@ public class ProduitServiceImpl implements ProduitService {
 
 
             }
-            return convertToDTO(produit);
+            return Mapper.convertToDTO(produit);
         } else {
             throw new RuntimeException("Produit non trouvé");
         }
@@ -130,20 +129,8 @@ public class ProduitServiceImpl implements ProduitService {
         return produitRepository.
                 findAll().
                 stream().
-                map(this::convertToDTO).
+                map(Mapper::convertToDTO).
                 collect(Collectors.toList());
-    }
-    public ProduitResponseDTO convertToDTO(Produit produit)
-    {
-        ProduitResponseDTO dto = new ProduitResponseDTO();
-
-        dto.setIdproduit(produit.getIdproduit());
-        dto.setIdCategorie(produit.getIdcategorie());
-        dto.setNom(produit.getNom());
-        dto.setPrix(produit.getPrix());
-        dto.setDescription(produit.getDescription());
-//        dto.setImage(produit.getImage());
-        return  dto;
     }
     public  Produit convertToEntity(ProduitRequestDTO produitDTO)
     {
@@ -160,7 +147,7 @@ public class ProduitServiceImpl implements ProduitService {
     public ProduitResponseDTO getProduitById(int idProduit) {
         return produitRepository.
                 findById(idProduit).
-                map(this::convertToDTO).
+                map(Mapper::convertToDTO).
                 orElse(null);
     }
 
@@ -170,7 +157,7 @@ public class ProduitServiceImpl implements ProduitService {
         Produit produit = this.convertToEntity(produitDTO);
         produitRepository.save(produit);
 
-        return convertToDTO(produit);
+        return Mapper.convertToDTO(produit);
     }
 
     @Override
@@ -180,7 +167,7 @@ public class ProduitServiceImpl implements ProduitService {
        produit.setNom(produitDTO.getNom());
        produit.setDescription(produitDTO.getDescription());
        produitRepository.save(produit);
-       return this.convertToDTO(produit);
+       return Mapper.convertToDTO(produit);
 
     }
 

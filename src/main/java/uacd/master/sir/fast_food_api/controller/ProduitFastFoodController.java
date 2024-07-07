@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uacd.master.sir.fast_food_api.DTO.ProduitFastFoodDTO;
+import uacd.master.sir.fast_food_api.dto.ProduitFastFoodDTO;
+import uacd.master.sir.fast_food_api.dto.ProduitResponseDTO;
 import uacd.master.sir.fast_food_api.services.ProduitFastFoodService;
 
 import java.util.List;
@@ -15,9 +16,9 @@ import java.util.List;
 public class ProduitFastFoodController {
     private ProduitFastFoodService produitFastFoodService;
     @GetMapping("/{idFastFood}")
-    public ResponseEntity<List<ProduitFastFoodDTO>> getAllProductsByIdFastFood(@PathVariable int idFastFood)
+    public ResponseEntity<List<ProduitResponseDTO>> getAllProductsByIdFastFood(@PathVariable int idFastFood)
     {
-        List<ProduitFastFoodDTO> allProductByidfastfood=this.produitFastFoodService.getProduitByIdFastFood(idFastFood);
+        List<ProduitResponseDTO> allProductByidfastfood=this.produitFastFoodService.getProduitByIdFastFood(idFastFood);
         if(allProductByidfastfood==null)
         {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
