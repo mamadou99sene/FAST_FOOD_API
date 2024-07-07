@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ProduitFastFoodRepository extends JpaRepository<Produitfastfood, ProduitfastfoodPK> {
-    List<Produitfastfood> findAllByFastfoodByIdfastfood_Idfastfood(int idfastfood);
+    List<Produitfastfood> findAllByIdfastfood(int idfastfood);
 }

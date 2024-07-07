@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 public class Produit {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idproduit", nullable = false)
     private int idproduit;
@@ -32,8 +32,8 @@ public class Produit {
     @OneToMany(mappedBy = "produit", fetch = FetchType.LAZY)
     private List<ImageProduit> imageProduits;
 
-    @OneToMany(mappedBy = "produitByIdproduit")
-    private List<Produitfastfood> produitfastfoodsByIdproduit;
+//    @OneToMany(mappedBy = "produitByIdproduit")
+//    private List<Produitfastfood> produitfastfoodsByIdproduit;
 
     public int getIdproduit() {
         return idproduit;

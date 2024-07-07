@@ -81,6 +81,16 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     }
 
     @Override
+    public UtilisateurResponseDTO verifyByEmail(UtilisateurRequestDTO userRequest) {
+        Utilisateur user = utilisateurRepository.findByEmailIgnoreCase(userRequest.getEmail());
+        if (user!=null && user.getPassword().contentEquals(userRequest.getPassword())){
+            UtilisateurResponseDTO responseDTO = new UtilisateurResponseDTO();
+            return Mapper.mapToUtilisateurResponse(user,responseDTO);
+        }
+        return null;
+    }
+
+    @Override
     public String delete(int id) {
 
         Utilisateur utilisateur = utilisateurRepository.findUtilisateurByIdutilisateur(id);

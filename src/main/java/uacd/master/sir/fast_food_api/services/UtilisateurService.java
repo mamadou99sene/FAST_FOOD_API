@@ -14,6 +14,6 @@ public interface UtilisateurService {
     List<UtilisateurResponseDTO> readAll();
     UtilisateurResponseDTO readById(int id);
     Boolean verifyToken(String token);
-
+    UtilisateurResponseDTO verifyByEmail(UtilisateurRequestDTO userRequest);
 
 }

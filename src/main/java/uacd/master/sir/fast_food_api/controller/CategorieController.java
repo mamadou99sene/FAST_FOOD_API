@@ -11,6 +11,7 @@ import java.util.List;
 
 @RequestMapping("/api/categorie")
 @AllArgsConstructor
+@RestController
 public class CategorieController {
 
     private  CategorieService categorieService;
@@ -23,6 +24,7 @@ public class CategorieController {
 
     @PostMapping
     public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) {
+        System.out.println(categorie.getIdcategorie());
         Categorie categorie1= categorieService.saveCategorie(categorie);
         return ResponseEntity.ok(categorie1);
     }
