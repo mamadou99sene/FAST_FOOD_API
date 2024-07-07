@@ -48,7 +48,7 @@ public class ProduitFastFoodServiceImpl implements ProduitFastFoodService {
             produitfastfood.setIdfastfood(pk.getIdfastfood());
 //            produitfastfood.setFastfoodByIdfastfood(produitFastFoodRepository.findById(pk).get().getFastfoodByIdfastfood());
             Produitfastfood p= this.produitFastFoodRepository.save(produitfastfood);
-            return this.convertToDTO(p);
+            return this.convertToProductFastFoodDTO(p);
         }
         catch (Exception e)
         {
