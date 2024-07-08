@@ -23,6 +23,13 @@ public class FastFoodController {
        return new ResponseEntity<>(fastfoods, HttpStatus.OK);
     }
 
+    @GetMapping("/manager/{idManager}")
+    ResponseEntity<List<FastFoodResponseDTO>> getFastFoodsByManager(@PathVariable String idManager)
+    {
+        List<FastFoodResponseDTO> fastfoods=fastFoodService.getAllFastFood();
+        return new ResponseEntity<>(fastfoods, HttpStatus.OK);
+    }
+
     @PostMapping
     ResponseEntity <FastFoodResponseDTO> saveFastFood(@RequestBody FastFoodRequestDTO dto)
     {

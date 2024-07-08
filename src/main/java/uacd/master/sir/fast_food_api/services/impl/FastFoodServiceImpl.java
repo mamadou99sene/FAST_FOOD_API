@@ -27,6 +27,14 @@ public class FastFoodServiceImpl implements FastFoodService {
     }
 
     @Override
+    public List<FastFoodResponseDTO> getFastFoodsByManager(int idManager) {
+        return fastFoodRepository.findByIdutilisateur(idManager).stream().
+                map(this::convertToDTO).
+                collect(Collectors.
+                        toList());
+    }
+
+    @Override
     public FastFoodResponseDTO getfastFoodById(int idFastFood) {
 
         return fastFoodRepository

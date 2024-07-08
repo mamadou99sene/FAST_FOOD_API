@@ -12,5 +12,7 @@ import java.util.List;
 public interface FastFoodRepository extends JpaRepository<Fastfood, Integer> {
     @Query("SELECT f from Fastfood  f where LOWER(f.nom) LIKE LOWER(CONCAT('%',:name, '%') ) ")
     List<Fastfood> findFastfoodByNomContainingIgnoreCase(@Param("name") String nom);
+
+    List<Fastfood> findByIdutilisateur(int idManager);
 }
 

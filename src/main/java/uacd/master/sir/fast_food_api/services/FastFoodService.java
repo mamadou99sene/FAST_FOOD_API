@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface FastFoodService {
     List<FastFoodResponseDTO> getAllFastFood();
+    List<FastFoodResponseDTO> getFastFoodsByManager(int idManager);
     FastFoodResponseDTO getfastFoodById(int idFastFood);
     FastFoodResponseDTO saveFastFood(FastFoodRequestDTO fastFoodRequestDTO);
     FastFoodResponseDTO updateFastFood(FastFoodRequestDTO fastFoodRequestDTO, int idFastFood);
