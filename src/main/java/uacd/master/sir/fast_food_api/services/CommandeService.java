@@ -6,9 +6,9 @@ import uacd.master.sir.fast_food_api.dto.CommandeResponseDTO;
 import java.util.List;
 
 public interface CommandeService {
-    CommandeResponseDTO createCommande(CommandeRequestDTO commandeRequestDTO);
-    CommandeResponseDTO getCommandeById(int id);
+    CommandeResponseDTO createCommande(CommandeRequestDTO requestDTO);
+    CommandeResponseDTO getCommande(int id);
     List<CommandeResponseDTO> getAllCommandes();
-    CommandeResponseDTO updateCommande(int id, CommandeRequestDTO commandeRequestDTO);
+    CommandeResponseDTO updateCommande(int id, CommandeRequestDTO requestDTO);
     void deleteCommande(int id);
 }

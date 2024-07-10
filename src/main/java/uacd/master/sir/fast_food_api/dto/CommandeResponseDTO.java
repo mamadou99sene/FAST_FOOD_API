@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -17,4 +18,6 @@ public class CommandeResponseDTO {
     private int idutilisateur;
     private Date date;
     private String status;
+    private List<Integer> fastfoods;
+    private List<Integer> produits;
 }
