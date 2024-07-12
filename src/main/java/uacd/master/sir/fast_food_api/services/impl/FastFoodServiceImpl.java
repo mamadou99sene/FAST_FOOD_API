@@ -45,8 +45,15 @@ public class FastFoodServiceImpl implements FastFoodService {
 
     @Override
     public FastFoodResponseDTO saveFastFood(FastFoodRequestDTO fastFoodRequestDTO) {
-
         Fastfood fastfood = this.convertToEntity(fastFoodRequestDTO);
+        fastFoodRepository.save(fastfood);
+        return convertToDTO(fastfood);
+    }
+
+    @Override
+    public FastFoodResponseDTO saveFastFoodWithIdUtilisateur(FastFoodRequestDTO fastFoodRequestDTO, int idUtilisateur) {
+        Fastfood fastfood = this.convertToEntity(fastFoodRequestDTO);
+        fastfood.setIdutilisateur(idUtilisateur);
         fastFoodRepository.save(fastfood);
         return convertToDTO(fastfood);
     }
@@ -77,7 +84,6 @@ public class FastFoodServiceImpl implements FastFoodService {
 
     @Override
     public List<FastFoodResponseDTO> getFastFoodsByName(String nom) {
-
       return   this.fastFoodRepository.
               findFastfoodByNomContainingIgnoreCase(nom).
                 stream().
@@ -105,11 +111,6 @@ public class FastFoodServiceImpl implements FastFoodService {
         fastfood.setNom(fastFoodRequestDTO.getNom());
         fastfood.setDescription(fastFoodRequestDTO.getDescription());
         fastfood.setLocalisation(fastFoodRequestDTO.getLocalisation());
-
-//        fastfood.setNom("KEUR COULY");
-//        fastfood.setDescription("Keur Couly Nekha Lekké");
-//        fastfood.setLocalisation("Guédiawaye");
-
 
         return fastfood;
 

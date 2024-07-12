@@ -14,4 +14,5 @@ public interface FastFoodService {
     FastFoodResponseDTO updateFastFood(FastFoodRequestDTO fastFoodRequestDTO, int idFastFood);
     boolean deleteFastFood(int idFastFood);
     List<FastFoodResponseDTO> getFastFoodsByName(String nom);
+    FastFoodResponseDTO saveFastFoodWithIdUtilisateur(FastFoodRequestDTO fastFoodRequestDTO, int idUtilisateur);
 }
