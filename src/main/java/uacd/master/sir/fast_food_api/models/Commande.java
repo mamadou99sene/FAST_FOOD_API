@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 public class Commande {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "idcommande", nullable = false)
     private int idcommande;

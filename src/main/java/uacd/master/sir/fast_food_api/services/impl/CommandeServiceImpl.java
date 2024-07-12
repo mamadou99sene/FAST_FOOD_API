@@ -33,7 +33,7 @@ public class CommandeServiceImpl implements CommandeService {
         // Définir les champs de commande à partir du DTO de requête
         commande.setIdutilisateur(requestDTO.getIdutilisateur());
         commande.setDate(requestDTO.getDate());
-        commande.setStatus(requestDTO.getStatus());
+        commande.setStatus("en cours");
 
         Commande savedCommande = commandeRepository.save(commande);
 
