@@ -30,8 +30,8 @@ public class Fastfood {
     @JoinColumn(name = "idutilisateur", referencedColumnName = "idutilisateur", nullable = false, insertable = false, updatable = false)
     private Utilisateur utilisateurByIdutilisateur;
 
-    @OneToMany(mappedBy = "fastfoodByIdfastfood")
-    private List<Commandefastfood> commandefastfoodsByIdfastfood;
+//    @OneToMany(mappedBy = "fastfoodByIdfastfood")
+//    private List<Commandefastfood> commandefastfoodsByIdfastfood;
 
 //    @OneToMany(mappedBy = "fastfoodByIdfastfood")
 //    private List<Produitfastfood> produitfastfoodsByIdfastfood;
@@ -97,13 +97,13 @@ public class Fastfood {
         this.utilisateurByIdutilisateur = utilisateurByIdutilisateur;
     }
 
-    public List<Commandefastfood> getCommandefastfoodsByIdfastfood() {
-        return commandefastfoodsByIdfastfood;
-    }
+    //    public List<Commandefastfood> getCommandefastfoodsByIdfastfood() {
+//        return commandefastfoodsByIdfastfood;
+//    }
 
-    public void setCommandefastfoodsByIdfastfood(List<Commandefastfood> commandefastfoodsByIdfastfood) {
-        this.commandefastfoodsByIdfastfood = commandefastfoodsByIdfastfood;
-    }
+//    public void setCommandefastfoodsByIdfastfood(List<Commandefastfood> commandefastfoodsByIdfastfood) {
+//        this.commandefastfoodsByIdfastfood = commandefastfoodsByIdfastfood;
+//    }
 
 //    public List<Produitfastfood> getProduitfastfoodsByIdfastfood() {
 //        return produitfastfoodsByIdfastfood;

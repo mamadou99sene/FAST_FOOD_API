@@ -11,11 +11,9 @@ import java.util.Objects;
 public class CommandeproduitPK implements Serializable {
     @Column(name = "idcommande", nullable = false)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idcommande;
     @Column(name = "idproduit", nullable = false)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idproduit;
 
     public int getIdcommande() {
