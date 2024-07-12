@@ -54,16 +54,19 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         String userType = requestDTO.getType();
 
         if (userType != null){
-            if (userType.equalsIgnoreCase("client"))
+            if (userType.equalsIgnoreCase("client")){
                 role.setRole(roleRepository.findRoleByIdrole(RoleEnum.CLIENT.ordinal()+1));
+                roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
+                confirmationRepository.save(utilisateurConfirmation);
+//                emailService.sendSimpleMessage(utilisateur.getPrenom(), utilisateur.getEmail(), utilisateurConfirmation.getToken());
+                emailService.sendHtmlMessage(utilisateur.getPrenom(), utilisateur.getEmail(), utilisateurConfirmation.getToken());
+            }
+
         }else{
             role.setRole(roleRepository.findRoleByIdrole(RoleEnum.MANAGER.ordinal()+1));
+            utilisateur.setEnabled(true);
+            roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
         }
-
-        roleUtilisateurRepository.save(Mapper.mapToEntityRoleutilisateur(new Roleutilisateur(), role));
-        confirmationRepository.save(utilisateurConfirmation);
-
-        emailService.sendSimpleMessage(utilisateur.getPrenom(), utilisateur.getEmail(), utilisateurConfirmation.getToken());
 
         return Mapper.mapToUtilisateurResponse(utilisateur, responseDTO);
     }

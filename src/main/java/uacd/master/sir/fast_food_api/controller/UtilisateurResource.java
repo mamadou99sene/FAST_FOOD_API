@@ -4,6 +4,7 @@ package uacd.master.sir.fast_food_api.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uacd.master.sir.fast_food_api.dto.UtilisateurRequestDTO;
 import uacd.master.sir.fast_food_api.dto.UtilisateurResponseDTO;
@@ -43,6 +44,7 @@ public class UtilisateurResource {
     }
 
     @GetMapping
+    @PreAuthorize("permitAll")
     public ResponseEntity<HttpResponse> confirmUserAccount(@RequestParam("token") String token){
         Boolean isSuccess = utilisateurService.verifyToken(token);
 

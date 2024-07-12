@@ -15,6 +15,7 @@ public class Commandefastfood {
     @Id
     @Column(name = "idfastfood", nullable = false)
     private int idfastfood;
+
     @ManyToOne
     @JoinColumn(name = "idfastfood", referencedColumnName = "idfastfood", insertable = false, updatable = false)
     private Fastfood fastfoodByIdfastfood;
