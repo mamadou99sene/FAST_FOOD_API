@@ -1,6 +1,7 @@
 package uacd.master.sir.fast_food_api.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uacd.master.sir.fast_food_api.dto.CommandefastfoodRequestDTO;
@@ -11,23 +12,22 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/commandefastfoods")
+@RequestMapping("/api/commandefastfoods")
 public class CommandefastfoodController {
 
     private final CommandefastfoodService commandefastfoodService;
 
     @PostMapping
-    public ResponseEntity<CommandefastfoodResponseDTO> createCommandefastfood(@RequestBody CommandefastfoodRequestDTO commandefastfoodRequestDTO) {
-        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.createCommandefastfood(commandefastfoodRequestDTO);
-        return ResponseEntity.ok(responseDTO);
+    public ResponseEntity<CommandefastfoodResponseDTO> createCommandefastfood(@RequestBody CommandefastfoodRequestDTO requestDTO) {
+        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.createCommandefastfood(requestDTO);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
     @GetMapping("/{idcommande}/{idfastfood}")
-    public ResponseEntity<CommandefastfoodResponseDTO> getCommandefastfoodById(@PathVariable int idcommande, @PathVariable int idfastfood) {
-        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.getCommandefastfoodById(idcommande, idfastfood);
+    public ResponseEntity<CommandefastfoodResponseDTO> getCommandefastfood(@PathVariable int idcommande, @PathVariable int idfastfood) {
+        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.getCommandefastfood(idcommande, idfastfood);
         return ResponseEntity.ok(responseDTO);
     }
-
     @GetMapping
     public ResponseEntity<List<CommandefastfoodResponseDTO>> getAllCommandefastfoods() {
         List<CommandefastfoodResponseDTO> responseDTOs = commandefastfoodService.getAllCommandefastfoods();
@@ -35,8 +35,11 @@ public class CommandefastfoodController {
     }
 
     @PutMapping("/{idcommande}/{idfastfood}")
-    public ResponseEntity<CommandefastfoodResponseDTO> updateCommandefastfood(@PathVariable int idcommande, @PathVariable int idfastfood, @RequestBody CommandefastfoodRequestDTO commandefastfoodRequestDTO) {
-        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.updateCommandefastfood(idcommande, idfastfood, commandefastfoodRequestDTO);
+    public ResponseEntity<CommandefastfoodResponseDTO> updateCommandefastfood(
+            @PathVariable int idcommande,
+            @PathVariable int idfastfood,
+            @RequestBody CommandefastfoodRequestDTO requestDTO) {
+        CommandefastfoodResponseDTO responseDTO = commandefastfoodService.updateCommandefastfood(idcommande, idfastfood, requestDTO);
         return ResponseEntity.ok(responseDTO);
     }
 
@@ -44,5 +47,5 @@ public class CommandefastfoodController {
     public ResponseEntity<Void> deleteCommandefastfood(@PathVariable int idcommande, @PathVariable int idfastfood) {
         commandefastfoodService.deleteCommandefastfood(idcommande, idfastfood);
         return ResponseEntity.noContent().build();
-}
+    }
 }
