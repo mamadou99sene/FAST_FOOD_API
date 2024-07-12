@@ -9,6 +9,7 @@ public interface CommandefastfoodService {
     CommandefastfoodResponseDTO createCommandefastfood(CommandefastfoodRequestDTO commandefastfoodRequestDTO);
     CommandefastfoodResponseDTO getCommandefastfood(int idcommande, int idfastfood);
     List<CommandefastfoodResponseDTO> getAllCommandefastfoods();
+    List<CommandefastfoodResponseDTO> getAllFastfoodCommands(int idFastFood);
     CommandefastfoodResponseDTO updateCommandefastfood(int idcommande, int idfastfood, CommandefastfoodRequestDTO commandefastfoodRequestDTO);
     void deleteCommandefastfood(int idcommande, int idfastfood);
 }

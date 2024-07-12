@@ -8,8 +8,11 @@ import uacd.master.sir.fast_food_api.dto.ProduitResponseDTO;
 import uacd.master.sir.fast_food_api.models.Commandeproduit;
 import uacd.master.sir.fast_food_api.models.CommandeproduitPK;
 import uacd.master.sir.fast_food_api.repositories.CommandeproduitRepository;
+import uacd.master.sir.fast_food_api.repositories.ProduitRepository;
 import uacd.master.sir.fast_food_api.services.CommandeproduitService;
+import uacd.master.sir.fast_food_api.utils.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,7 @@ public class CommandeproduitServiceImpl implements CommandeproduitService {
 
     // Déclaration du repository pour accéder aux données de Commandeproduit
     private final CommandeproduitRepository commandeproduitRepository;
+    private final ProduitRepository produitRepository;
 
     @Override
     public CommandeproduitResponseDTO createCommandeproduit(CommandeproduitRequestDTO requestDTO) {
@@ -72,6 +76,17 @@ public class CommandeproduitServiceImpl implements CommandeproduitService {
         id.setIdcommande(idcommande);
         id.setIdproduit(idproduit);
         commandeproduitRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ProduitResponseDTO> getProductsByCommand(int idCommand) {
+        List<ProduitResponseDTO> products= new ArrayList<>();
+        List<Commandeproduit>commandeproduits = commandeproduitRepository.findByIdcommande(idCommand);
+        for(Commandeproduit c: commandeproduits){
+            ProduitResponseDTO produit = Mapper.convertToDTO(produitRepository.findProduitByIdproduit(c.getIdproduit()));
+            products.add(produit);
+        }
+        return products;
     }
 
     // Méthode privée pour convertir une entité Commandeproduit en DTO de réponse

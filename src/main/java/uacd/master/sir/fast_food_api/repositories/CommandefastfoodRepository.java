@@ -11,4 +11,6 @@ import java.util.List;
 public interface CommandefastfoodRepository extends JpaRepository <Commandefastfood, CommandefastfoodPK> {
     void deleteByIdcommande(int idcommande);
     List<Commandefastfood> findByIdcommande(int idcommande);
+
+    List<Commandefastfood> findByIdfastfood(int idfastfood);
 }

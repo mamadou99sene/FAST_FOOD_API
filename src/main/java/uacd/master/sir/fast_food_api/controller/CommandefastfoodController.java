@@ -34,6 +34,12 @@ public class CommandefastfoodController {
         return ResponseEntity.ok(responseDTOs);
     }
 
+    @GetMapping("/{idFastFood}")
+    public ResponseEntity<List<CommandefastfoodResponseDTO>> getAllfastfoodCommands(@PathVariable int idFastFood) {
+        List<CommandefastfoodResponseDTO> responseDTOs = commandefastfoodService.getAllFastfoodCommands(idFastFood);
+        return ResponseEntity.ok(responseDTOs);
+    }
+
     @PutMapping("/{idcommande}/{idfastfood}")
     public ResponseEntity<CommandefastfoodResponseDTO> updateCommandefastfood(
             @PathVariable int idcommande,

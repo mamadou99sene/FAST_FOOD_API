@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uacd.master.sir.fast_food_api.dto.CommandeproduitRequestDTO;
 import uacd.master.sir.fast_food_api.dto.CommandeproduitResponseDTO;
+import uacd.master.sir.fast_food_api.dto.ProduitResponseDTO;
 import uacd.master.sir.fast_food_api.services.CommandeproduitService;
 
 import java.util.List;
@@ -25,6 +26,12 @@ public class CommandeproduitController {
     public ResponseEntity<CommandeproduitResponseDTO> getCommandeproduit(@PathVariable int idcommande, @PathVariable int idproduit) {
         CommandeproduitResponseDTO responseDTO = commandeproduitService.getCommandeproduit(idcommande, idproduit);
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @GetMapping("/{idCommand}")
+    public ResponseEntity<List<ProduitResponseDTO>> getProductsByCommand(@PathVariable int idCommand) {
+        List<ProduitResponseDTO> responseDTOs = commandeproduitService.getProductsByCommand(idCommand);
+        return ResponseEntity.ok(responseDTOs);
     }
 
     @GetMapping

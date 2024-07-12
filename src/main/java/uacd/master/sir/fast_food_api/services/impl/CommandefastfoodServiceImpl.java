@@ -49,6 +49,13 @@ public class CommandefastfoodServiceImpl implements CommandefastfoodService {
     }
 
     @Override
+    public List<CommandefastfoodResponseDTO> getAllFastfoodCommands(int idFastFood) {
+        return commandefastfoodRepository.findByIdfastfood(idFastFood).stream()
+                .map(this::convertToResponseDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public CommandefastfoodResponseDTO updateCommandefastfood(int idcommande, int idfastfood, CommandefastfoodRequestDTO commandefastfoodRequestDTO) {
         // Recherche de l'entité Commandefastfood par son identifiant composite
         CommandefastfoodPK id = new CommandefastfoodPK(idcommande, idfastfood);
