@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @IdClass(CommandeproduitPK.class)
 public class Commandeproduit {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idcommande", nullable = false)
     private int idcommande;
@@ -20,14 +20,14 @@ public class Commandeproduit {
         this.idcommande = idcommande;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idproduit", nullable = false)
     private int idproduit;
 
-    @ManyToOne
-    @JoinColumn(name = "idproduit", referencedColumnName = "idproduit", insertable = false, updatable = false)
-    Produit produitByIdProduit;
+//    @ManyToOne
+//    @JoinColumn(name = "idproduit", referencedColumnName = "idproduit", insertable = false, updatable = false)
+//    Produit produitByIdProduit;
 
     public int getIdproduit() {
         return idproduit;
@@ -36,13 +36,13 @@ public class Commandeproduit {
     public void setIdproduit(int idproduit) {
         this.idproduit = idproduit;
     }
-    public Produit getProduitByIdProduit() {
-        return produitByIdProduit;
-    }
+//    public Produit getProduitByIdProduit() {
+//        return produitByIdProduit;
+//    }
 
-    public void setProduitByIdProduit(Produit produitByIdProduit) {
-        this.produitByIdProduit = produitByIdProduit;
-    }
+//    public void setProduitByIdProduit(Produit produitByIdProduit) {
+//        this.produitByIdProduit = produitByIdProduit;
+//    }
 
     @Override
     public boolean equals(Object o) {
