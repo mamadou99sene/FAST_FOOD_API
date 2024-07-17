@@ -56,4 +56,5 @@ public class Commandeproduit {
     public int hashCode() {
         return Objects.hash(idcommande, idproduit);
     }
+    // modoufaye
 }
