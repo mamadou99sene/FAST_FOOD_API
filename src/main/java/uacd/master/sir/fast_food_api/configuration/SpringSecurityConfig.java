@@ -28,7 +28,7 @@ import java.util.Arrays;
 @Configuration
 public class SpringSecurityConfig {
 
-    private String jwtKey = "2m897gLc75aEv2HBnnn7BMgUbN2BT62b";
+    private final String jwtKey = "2m897gLc75aEv2HBnnn7BMgUbN2BT62b";
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http)throws Exception{
         return http
