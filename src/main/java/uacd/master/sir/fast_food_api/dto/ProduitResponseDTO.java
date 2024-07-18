@@ -16,5 +16,6 @@ public class ProduitResponseDTO {
     private String nom;
     private String description;
     private BigInteger prix;
+    private int idfastfood;
     private String image;
 }

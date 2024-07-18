@@ -23,6 +23,9 @@ public class ProduitFastFoodController {
         {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        allProductByidfastfood.forEach(produitResponseDTO -> {
+            produitResponseDTO.setIdfastfood(idFastFood);
+        });
         return new ResponseEntity<>(allProductByidfastfood,HttpStatus.OK);
     }
     @PostMapping

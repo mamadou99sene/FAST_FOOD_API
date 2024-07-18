@@ -17,6 +17,8 @@ public class CommandeController {
     private final CommandeService commandeService;
     @PostMapping
     public ResponseEntity<CommandeResponseDTO> createCommande(@RequestBody CommandeRequestDTO requestDTO) {
+        System.out.println(requestDTO.getIdutilisateur());
+        System.out.println(requestDTO.getFastfoods());
         CommandeResponseDTO responseDTO = commandeService.createCommande(requestDTO);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
