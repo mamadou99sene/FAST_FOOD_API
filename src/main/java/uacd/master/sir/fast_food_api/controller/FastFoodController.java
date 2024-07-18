@@ -23,8 +23,8 @@ public class FastFoodController {
     }
 
     @GetMapping("/manager/{idManager}")
-    ResponseEntity<List<FastFoodResponseDTO>> getFastFoodsByManager(@PathVariable String idManager) {
-        List<FastFoodResponseDTO> fastfoods = fastFoodService.getAllFastFood();
+    ResponseEntity<List<FastFoodResponseDTO>> getFastFoodsByManager(@PathVariable int idManager) {
+        List<FastFoodResponseDTO> fastfoods = fastFoodService.getFastFoodsByManager(idManager);
         return new ResponseEntity<>(fastfoods, HttpStatus.OK);
     }
 
