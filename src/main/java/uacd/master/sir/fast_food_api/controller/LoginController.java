@@ -1,5 +1,6 @@
 package uacd.master.sir.fast_food_api.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ public class LoginController {
     }
 
     @PostMapping("/token")
+    @PreAuthorize("permitAll")
     public String getToken(Authentication authentication) {
         return jwtService.generateToken(authentication);
     }
